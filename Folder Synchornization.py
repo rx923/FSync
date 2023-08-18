@@ -73,7 +73,7 @@ if __name__ == "__main__":
 
     while True:
         # Loop continues executing and analyzes for the operation of deletion/creation/modification of .txt files within the source folder.
-        # Synchornization of the .txt files occurs at the set time duration while running the code runs in CMD.
+        # Synchornization of the .txt files occurs at the set time duration while is being executed in CMD.
         synchronize_folders(source_folder, replica_folder, log_file_path)
         time.sleep(sync_interval)
 
