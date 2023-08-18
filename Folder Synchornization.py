@@ -43,14 +43,18 @@ def synchronize_folders(source_folder, replica_folder, log_file_path):
                     log_file.write(log_entry + "\n")
                     print(log_entry)
 
-        # Walk through the replica folder's directory structure
+        # Walk through the replica folder's directory structure using the built-in module of 'os'.
         for root, _, files in os.walk(replica_folder):
+            # Iterating through the root, _ files in the replica_folder
             for file in files:
+                # This for loop iterates throguh the files & data within the folder.
+                # If the .txt files in the source_folder are present, it replicates the files in the replica_folder
                 replica_file_path = os.path.join(root, file)
                 source_file_path = os.path.join(source_folder, os.path.relpath(replica_file_path, replica_folder))
 
                 # Remove replica file if it doesn't exist in the source folder
                 if not os.path.exists(source_file_path):
+                    # Removes the files
                     os.remove(replica_file_path)
                     log_entry = f"Remove: {replica_file_path}"
                     log_file.write(log_entry + "\n")
@@ -68,5 +72,14 @@ if __name__ == "__main__":
     log_file_path = sys.argv[4]
 
     while True:
+        # Loop continues executing and analyzes for the operation of deletion/creation/modification of .txt files within the source folder.
+        # Synchornization of the .txt files occurs at the set time duration while running the code runs in CMD.
         synchronize_folders(source_folder, replica_folder, log_file_path)
         time.sleep(sync_interval)
+
+# In order to run the code in command line, you have to use the below path:
+#    Powershell: python.exe '.\Folder Synchronization.py' <path of the source_folder> <path of the replica_folder> <synchornization_interval of type int> <log_file_path.txt>
+
+
+
+
