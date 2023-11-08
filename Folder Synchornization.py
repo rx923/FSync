@@ -47,7 +47,7 @@ def synchronize_folders(source_folder, replica_folder, log_file_path):
         for root, _, files in os.walk(replica_folder):
             # Iterating through the root, _ files in the replica_folder
             for file in files:
-                # This for loop iterates throguh the files & data within the folder.
+                # This for loop iterates through the files & data within the folder.
                 # If the .txt files in the source_folder are present, it replicates the files in the replica_folder
                 replica_file_path = os.path.join(root, file)
                 source_file_path = os.path.join(source_folder, os.path.relpath(replica_file_path, replica_folder))
